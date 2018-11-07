@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 /**
  * @author mehdithe
@@ -23,6 +24,11 @@ public class Module {
 
   @ManyToMany(mappedBy = "modules")
   private Set<Student> students;
+
+  private String name;
+
+  @OneToOne
+  private Professor professor;
 
   public Module() {
   }

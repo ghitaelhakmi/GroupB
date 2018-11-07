@@ -13,151 +13,155 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 /**
- * @author mehdithe
+ * @author chermehdi
+ * @author YassirSalih
  */
-
 @Entity
 public class Internship extends Experience {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
 
-	private String subject;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Integer id;
 
-	@OneToOne(mappedBy = "endOfStudiesProject")
-	private Student student;
+  private String subject;
 
-	@ManyToOne
-	private Enterprise enterprise;
+  @OneToOne(mappedBy = "endOfStudiesProject")
+  private Student student;
 
-	private String supervisor;
+  @ManyToOne
+  private Enterprise enterprise;
 
-	private boolean remuneration;
+  private String supervisor;
 
-	private boolean preEmployment;
+  private boolean remuneration;
 
-	private String job;
+  private boolean preEmployment;
 
-	@OneToMany
-	private List<Technology> technologies;
+  private String job;
 
-	private LocalDate startDate;
+  @OneToMany
+  private List<Technology> technologies;
 
-	private LocalDate endDate;
+  private LocalDate startDate;
 
-	public Internship() {
-		student = new Student();
-		enterprise = new Enterprise();
-	}
+  private LocalDate endDate;
 
-	public Internship(Integer id, String subject, Student student, Enterprise enterprise, String supervisor,
-			boolean remuneration, boolean preEmployment, String job, List<Technology> technologies, LocalDate startDate,
-			LocalDate endDate) {
-		super();
-		this.id = id;
-		this.subject = subject;
-		this.student = student;
-		this.enterprise = enterprise;
-		this.supervisor = supervisor;
-		this.remuneration = remuneration;
-		this.preEmployment = preEmployment;
-		this.job = job;
-		this.technologies = technologies;
-		this.startDate = startDate;
-		this.endDate = endDate;
-	}
+  public Internship() {
+    student = new Student();
+    enterprise = new Enterprise();
+  }
 
-	public Integer getId() {
-		return id;
-	}
+  public Internship(Integer id, String subject, Student student, Enterprise enterprise,
+      String supervisor,
+      boolean remuneration, boolean preEmployment, String job, List<Technology> technologies,
+      LocalDate startDate,
+      LocalDate endDate) {
+    super();
+    this.id = id;
+    this.subject = subject;
+    this.student = student;
+    this.enterprise = enterprise;
+    this.supervisor = supervisor;
+    this.remuneration = remuneration;
+    this.preEmployment = preEmployment;
+    this.job = job;
+    this.technologies = technologies;
+    this.startDate = startDate;
+    this.endDate = endDate;
+  }
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+  public Integer getId() {
+    return id;
+  }
 
-	public String getSubject() {
-		return subject;
-	}
+  public void setId(Integer id) {
+    this.id = id;
+  }
 
-	public void setSubject(String subject) {
-		this.subject = subject;
-	}
+  public String getSubject() {
+    return subject;
+  }
 
-	public Student getStudent() {
-		return student;
-	}
+  public void setSubject(String subject) {
+    this.subject = subject;
+  }
 
-	public void setStudent(Student student) {
-		this.student = student;
-	}
+  public Student getStudent() {
+    return student;
+  }
 
-	public Enterprise getEnterprise() {
-		return enterprise;
-	}
+  public void setStudent(Student student) {
+    this.student = student;
+  }
 
-	public void setEnterprise(Enterprise enterprise) {
-		this.enterprise = enterprise;
-	}
+  public Enterprise getEnterprise() {
+    return enterprise;
+  }
 
-	public String getSupervisor() {
-		return supervisor;
-	}
+  public void setEnterprise(Enterprise enterprise) {
+    this.enterprise = enterprise;
+  }
 
-	public void setSupervisor(String supervisor) {
-		this.supervisor = supervisor;
-	}
+  public String getSupervisor() {
+    return supervisor;
+  }
 
-	public boolean isRemuneration() {
-		return remuneration;
-	}
+  public void setSupervisor(String supervisor) {
+    this.supervisor = supervisor;
+  }
 
-	public void setRemuneration(boolean remuneration) {
-		this.remuneration = remuneration;
-	}
+  public boolean isRemuneration() {
+    return remuneration;
+  }
 
-	public boolean isPreEmployment() {
-		return preEmployment;
-	}
+  public void setRemuneration(boolean remuneration) {
+    this.remuneration = remuneration;
+  }
 
-	public void setPreEmployment(boolean preEmployment) {
-		this.preEmployment = preEmployment;
-	}
+  public boolean isPreEmployment() {
+    return preEmployment;
+  }
 
-	public String getJob() {
-		return job;
-	}
+  public void setPreEmployment(boolean preEmployment) {
+    this.preEmployment = preEmployment;
+  }
 
-	public void setJob(String job) {
-		this.job = job;
-	}
+  public String getJob() {
+    return job;
+  }
 
-	public List<Technology> getTechnologies() {
-		return technologies;
-	}
+  public void setJob(String job) {
+    this.job = job;
+  }
 
-	public void setTechnologies(List<Technology> technologies) {
-		this.technologies = technologies;
-	}
+  public List<Technology> getTechnologies() {
+    return technologies;
+  }
 
-	public LocalDate getStartDate() {
-		return startDate;
-	}
+  public void setTechnologies(List<Technology> technologies) {
+    this.technologies = technologies;
+  }
 
-	public void setStartDate(LocalDate startDate) {
-		this.startDate = startDate;
-	}
+  public LocalDate getStartDate() {
+    return startDate;
+  }
 
-	public LocalDate getEndDate() {
-		return endDate;
-	}
+  public void setStartDate(LocalDate startDate) {
+    this.startDate = startDate;
+  }
 
-	public void setEndDate(LocalDate endDate) {
-		this.endDate = endDate;
-	}
+  public LocalDate getEndDate() {
+    return endDate;
+  }
 
-	@Override
-	public String toString() {
-		return "Internship [id=" + id + ", subject=" + subject + ", student=" + student + ", enterprise=" + enterprise
-				+ "]";
-	}
+  public void setEndDate(LocalDate endDate) {
+    this.endDate = endDate;
+  }
+
+  @Override
+  public String toString() {
+    return "Internship [id=" + id + ", subject=" + subject + ", student=" + student
+        + ", enterprise=" + enterprise
+        + "]";
+  }
 }

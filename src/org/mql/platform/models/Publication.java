@@ -1,6 +1,6 @@
 package org.mql.platform.models;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,6 +11,8 @@ import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  * @author mehdithe
@@ -19,79 +21,79 @@ import javax.persistence.OneToMany;
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class Publication {
 
-  @Id
-  @GeneratedValue(generator = "publication", strategy = GenerationType.TABLE)
-  private Long id;
+	@Id
+	@GeneratedValue(generator = "publication", strategy = GenerationType.TABLE)
+	private Long id;
 
-  @ManyToOne(optional = false)
-  private User owner;
+	@ManyToOne(optional = false)
+	private User owner;
 
-  @OneToMany
-  @JoinColumn(name = "publication_id")
-  private Set<Document> documents;
+	@OneToMany
+	@JoinColumn(name = "publication_id")
+	private Set<Document> documents;
 
-  private String title;
+	private String title;
 
-  private String description;
+	private String description;
 
-  private String location;
+	private String location;
 
-  private Date date;
+	private LocalDateTime publicationDate;
 
+	public Long getId() {
+		return id;
+	}
 
-  public Long getId() {
-    return id;
-  }
+	public String getTitle() {
+		return title;
+	}
 
-  public String getTitle() {
-    return title;
-  }
+	public void setTitle(String title) {
+		this.title = title;
+	}
 
-  public void setTitle(String title) {
-    this.title = title;
-  }
+	public String getDescription() {
+		return description;
+	}
 
-  public String getDescription() {
-    return description;
-  }
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
-  public void setDescription(String description) {
-    this.description = description;
-  }
+	public String getLocation() {
+		return location;
+	}
 
-  public String getLocation() {
-    return location;
-  }
+	public void setLocation(String location) {
+		this.location = location;
+	}
 
-  public void setLocation(String location) {
-    this.location = location;
-  }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-  public Date getDate() {
-    return date;
-  }
+	public User getOwner() {
+		return owner;
+	}
 
-  public void setDate(Date date) {
-    this.date = date;
-  }
+	public void setOwner(User owner) {
+		this.owner = owner;
+	}
 
-  public void setId(Long id) {
-    this.id = id;
-  }
+	public Set<Document> getDocuments() {
+		return documents;
+	}
 
-  public User getOwner() {
-    return owner;
-  }
+	public void setDocuments(Set<Document> documents) {
+		this.documents = documents;
+	}
 
-  public void setOwner(User owner) {
-    this.owner = owner;
-  }
+	public LocalDateTime getPublicationDate() {
+		return publicationDate;
+	}
 
-  public Set<Document> getDocuments() {
-    return documents;
-  }
+	public void setPublicationDate(LocalDateTime publicationDate) {
+		this.publicationDate = publicationDate;
+	}
 
-  public void setDocuments(Set<Document> documents) {
-    this.documents = documents;
-  }
 }

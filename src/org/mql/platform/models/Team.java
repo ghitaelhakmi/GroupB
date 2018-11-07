@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 
 /**
  * @author mehdithe
@@ -22,6 +23,11 @@ public class Team {
 
   @ManyToMany(mappedBy = "teams")
   private Set<Project> projects;
+
+  private String name;
+
+  @OneToOne
+  private Student teamLeader;
 
   public Integer getId() {
     return id;
@@ -45,5 +51,21 @@ public class Team {
 
   public void setProjects(Set<Project> projects) {
     this.projects = projects;
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public Student getTeamLeader() {
+    return teamLeader;
+  }
+
+  public void setTeamLeader(Student teamLeader) {
+    this.teamLeader = teamLeader;
   }
 }

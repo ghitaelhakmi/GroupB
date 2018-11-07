@@ -1,5 +1,6 @@
 package org.mql.platform.models;
 
+import java.time.LocalDate;
 import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,6 +11,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  * @author mehdithe
@@ -34,6 +37,12 @@ public class Project {
 
   @ManyToOne
   private Module module;
+
+  private String title;
+
+  private String description;
+
+  private LocalDate createdAt;
 
   public Project() {
   }
@@ -68,5 +77,29 @@ public class Project {
 
   public void setModule(Module module) {
     this.module = module;
+  }
+
+  public String getTitle() {
+    return title;
+  }
+
+  public void setTitle(String title) {
+    this.title = title;
+  }
+
+  public String getDescription() {
+    return description;
+  }
+
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
+  public LocalDate getCreatedAt() {
+    return createdAt;
+  }
+
+  public void setCreatedAt(LocalDate createdAt) {
+    this.createdAt = createdAt;
   }
 }

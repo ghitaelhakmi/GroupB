@@ -9,7 +9,6 @@ import org.mql.platform.models.User;
  * @author mehdithe
  *
  */
-
 public interface AuthenticationService {
 
   /**

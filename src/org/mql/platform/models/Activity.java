@@ -1,9 +1,14 @@
 package org.mql.platform.models;
 
-import java.util.ArrayList;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
+
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  * @author mehdithe
@@ -14,7 +19,14 @@ public class Activity extends Publication {
   private String category;
 
   @ElementCollection
-  private List<String> guests = new ArrayList<>();
+  private List<String> guests;
+
+  private LocalDate activityDate;
+
+  private LocalDateTime activityTime;
+
+  public Activity() {
+  }
 
   public String getCategory() {
     return category;
@@ -32,4 +44,19 @@ public class Activity extends Publication {
     this.guests = guests;
   }
 
+  public LocalDate getActivityDate() {
+    return activityDate;
+  }
+
+  public void setActivityDate(LocalDate activityDate) {
+    this.activityDate = activityDate;
+  }
+
+  public LocalDateTime getActivityTime() {
+    return activityTime;
+  }
+
+  public void setActivityTime(LocalDateTime activityTime) {
+    this.activityTime = activityTime;
+  }
 }
