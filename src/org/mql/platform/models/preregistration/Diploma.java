@@ -24,8 +24,6 @@ public class Diploma {
 
   private int coef;
 
-  private String mention;
-
   private double grade;
 
   private String city;
@@ -37,8 +35,8 @@ public class Diploma {
   }
 
   public Diploma(String title, String university, String college, String speciality,
-      String district, int year,
-      int coef, String mention, double grade, String city, List<Mark> marks) {
+      String district, int year, int coef, double grade,
+      String city, List<Mark> marks) {
     setTitle(title);
     setUniversity(university);
     setCollege(college);
@@ -46,7 +44,6 @@ public class Diploma {
     setDistrict(district);
     setYear(year);
     setCoef(coef);
-    setMention(mention);
     setGrade(grade);
     setCity(city);
     setMarks(marks);
@@ -108,14 +105,6 @@ public class Diploma {
     this.coef = coef;
   }
 
-  public String getMention() {
-    return mention;
-  }
-
-  public void setMention(String mention) {
-    this.mention = mention;
-  }
-
   public double getGrade() {
     return grade;
   }
@@ -146,7 +135,6 @@ public class Diploma {
     return "Diploma [title=" + title + ", univesity=" + university + ", college=" + college
         + ", speciality="
         + speciality + ", district=" + district + ", year=" + year + ", coef=" + coef + ", mention="
-        + mention
         + ", grade=" + grade + ", city=" + city + ", degrees=" + marks + "]";
   }
 
@@ -172,9 +160,6 @@ public class Diploma {
     xml.append("<grade>");
     xml.append(getGrade());
     xml.append("</grade>");
-    xml.append("<mention>");
-    xml.append(getMention());
-    xml.append("</mention>");
     xml.append("<city>");
     xml.append(getCity());
     xml.append("</city>");

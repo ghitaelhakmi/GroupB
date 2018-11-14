@@ -2,7 +2,6 @@ package org.mql.platform.dao.preregistration;
 
 import java.io.File;
 import java.io.PrintWriter;
-import java.time.LocalDate;
 import java.util.List;
 import java.util.Vector;
 import org.mql.platform.models.preregistration.*;
@@ -69,7 +68,7 @@ public class CandidateDomParserDefault implements CandidateDomParser {
       candidate.setCne(a.getChild("cne").getIntValue());
       candidate.setLastName(a.getChild("lastName").getValue());
       candidate.setFirstName(a.getChild("firstName").getValue());
-      candidate.setAge(a.getChild("age").getIntValue());
+      candidate.setYearOfBirth(a.getChild("age").getIntValue());
       candidate.setSituation(a.getChild("situation").getValue());
       candidate.setCity(a.getChild("city").getValue());
       candidate.setGender(a.getChild("gender").getValue());
@@ -90,7 +89,7 @@ public class CandidateDomParserDefault implements CandidateDomParser {
         diploma.setDistrict(b.getChild("district").getValue());
         diploma.setYear(b.getIntAttribute("year"));
         diploma.setCoef(b.getIntAttribute("coef"));
-        diploma.setMention(b.getChild("mention").getValue());
+//        diploma.setMention(b.getChild("mention").getValue());
         diploma.setGrade(b.getChild("grade").getDoubleValue());
         diploma.setCity(b.getChild("city").getValue());
         /*******************/

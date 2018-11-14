@@ -19,7 +19,7 @@ public class Candidate {
 
   private String firstName;
 
-  private int age;
+  private int yearOfBirth;
 
   private String situation;
 
@@ -36,14 +36,14 @@ public class Candidate {
   public Candidate() {
   }
 
-  public Candidate(String cin, int cne, String lastName, String firstName, int age,
+  public Candidate(String cin, int cne, String lastName, String firstName, int dateOfBirth,
       String situation,
       String city, String gender, boolean handicap, List<Diploma> diplomas) {
     setCin(cin);
     setCne(cne);
     setLastName(lastName);
     setFirstName(firstName);
-    setAge(age);
+    setYearOfBirth(dateOfBirth);
     setSituation(situation);
     setCity(city);
     setGender(gender);
@@ -83,12 +83,12 @@ public class Candidate {
     this.firstName = firstName;
   }
 
-  public int getAge() {
-    return age;
+  public int getYearOfBirth() {
+    return yearOfBirth;
   }
 
-  public void setAge(int age) {
-    this.age = age;
+  public void setYearOfBirth(int yearOfBirth) {
+    this.yearOfBirth = yearOfBirth;
   }
 
   public String getSituation() {
@@ -142,7 +142,8 @@ public class Candidate {
 
   public String toString() {
     return "Candidate [cin=" + cin + ", cne=" + cne + ", lastName=" + lastName + ", firstName="
-        + firstName + ", age=" + age + ", situation=" + situation + ", city=" + city + ", gender="
+        + firstName + ", yearOfBirth=" + yearOfBirth + ", situation=" + situation + ", city=" + city
+        + ", gender="
         + gender
         + ", handicap=" + handicap + ", diplomas=" + diplomas + "]";
   }
@@ -153,7 +154,7 @@ public class Candidate {
     xml.append("<cne>" + getCne() + "</cne>");
     xml.append("<firstName>" + getFirstName() + "</firstName>");
     xml.append("<lastName>" + getLastName() + "</lastName>");
-    xml.append("<age>" + getAge() + "</age>");
+    xml.append("<yearOfBirth>" + getYearOfBirth() + "</yearOfBirth>");
     xml.append("<situation>" + getSituation() + "</situation>");
     xml.append("<city>" + getCity() + "</city>");
     xml.append("<handicap>" + isHandicap() + "</handicap>");

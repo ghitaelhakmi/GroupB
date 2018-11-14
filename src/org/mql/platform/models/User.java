@@ -31,9 +31,6 @@ public abstract class User {
   )
   private Set<Role> roles;
 
-  @OneToMany(mappedBy = "owner")
-  private List<Publication> publications;
-
   private String firstName;
 
   private String lastName;
@@ -64,14 +61,6 @@ public abstract class User {
 
   public void setRoles(Set<Role> roles) {
     this.roles = roles;
-  }
-
-  public List<Publication> getPublications() {
-    return publications;
-  }
-
-  public void setPublications(List<Publication> publications) {
-    this.publications = publications;
   }
 
   public String getFirstName() {

@@ -2,8 +2,11 @@ package org.mql.platform.models;
 
 import java.time.LocalDate;
 
+import java.util.Date;
 import java.util.List;
 
+import java.util.Set;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,6 +14,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  * @author chermehdi
@@ -42,9 +47,20 @@ public class Internship extends Experience {
   @OneToMany
   private List<Technology> technologies;
 
+  @OneToMany
+  private Set<Document> documents;
+
+  @Temporal(TemporalType.DATE)
+  private Date defenseDate;
+
   private LocalDate startDate;
 
   private LocalDate endDate;
+
+  @ElementCollection
+  private List<String> jury;
+
+  private double mark;
 
   public Internship() {
     student = new Student();
@@ -156,6 +172,38 @@ public class Internship extends Experience {
 
   public void setEndDate(LocalDate endDate) {
     this.endDate = endDate;
+  }
+
+  public Set<Document> getDocuments() {
+    return documents;
+  }
+
+  public void setDocuments(Set<Document> documents) {
+    this.documents = documents;
+  }
+
+  public Date getDefenseDate() {
+    return defenseDate;
+  }
+
+  public void setDefenseDate(Date defenseDate) {
+    this.defenseDate = defenseDate;
+  }
+
+  public List<String> getJury() {
+    return jury;
+  }
+
+  public void setJury(List<String> jury) {
+    this.jury = jury;
+  }
+
+  public double getMark() {
+    return mark;
+  }
+
+  public void setMark(double mark) {
+    this.mark = mark;
   }
 
   @Override

@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
@@ -28,7 +29,17 @@ public class Project {
   @JoinTable(
       name = "project_team",
       joinColumns = @JoinColumn(name = "project_id", referencedColumnName = "id"),
-      inverseJoinColumns = @JoinColumn(name = "team_id", referencedColumnName = "id")
+      inverseJoinColumns = {
+          @JoinColumn(
+              name = "team_level", referencedColumnName = "level"
+          ),
+          @JoinColumn(
+              name = "team_name", referencedColumnName = "name"
+          ),
+          @JoinColumn(
+              name = "team_year", referencedColumnName = "year"
+          )
+      }
   )
   private Set<Team> teams;
 

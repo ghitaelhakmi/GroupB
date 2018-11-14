@@ -1,6 +1,7 @@
 package org.mql.platform.models;
 
 import java.util.Set;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,28 +15,17 @@ import javax.persistence.OneToOne;
 @Entity
 public class Team {
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Integer id;
+  @EmbeddedId
+  private TeamId id;
 
-  @ManyToMany(mappedBy = "teams")
+  @ManyToMany
   private Set<Student> students;
 
   @ManyToMany(mappedBy = "teams")
   private Set<Project> projects;
 
-  private String name;
-
   @OneToOne
   private Student teamLeader;
-
-  public Integer getId() {
-    return id;
-  }
-
-  public void setId(Integer id) {
-    this.id = id;
-  }
 
   public Set<Student> getStudents() {
     return students;
@@ -53,19 +43,19 @@ public class Team {
     this.projects = projects;
   }
 
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
   public Student getTeamLeader() {
     return teamLeader;
   }
 
   public void setTeamLeader(Student teamLeader) {
     this.teamLeader = teamLeader;
+  }
+
+  public TeamId getId() {
+    return id;
+  }
+
+  public void setId(TeamId id) {
+    this.id = id;
   }
 }
