@@ -2,8 +2,11 @@ package org.mql.platform.models;
 
 import java.time.LocalDate;
 
+import java.util.Date;
 import java.util.List;
 
+import java.util.Set;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,153 +14,202 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
- * @author mehdithe
+ * @author chermehdi
+ * @author YassirSalih
  */
-
 @Entity
 public class Internship extends Experience {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
 
-	private String subject;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Integer id;
 
-	@OneToOne(mappedBy = "endOfStudiesProject")
-	private Student student;
+  private String subject;
 
-	@ManyToOne
-	private Enterprise enterprise;
+  @OneToOne(mappedBy = "endOfStudiesProject")
+  private Student student;
 
-	private String supervisor;
+  @ManyToOne
+  private Enterprise enterprise;
 
-	private boolean remuneration;
+  private String supervisor;
 
-	private boolean preEmployment;
+  private boolean remuneration;
 
-	private String job;
+  private boolean preEmployment;
 
-	@OneToMany
-	private List<Technology> technologies;
+  private String job;
 
-	private LocalDate startDate;
+  @OneToMany
+  private List<Technology> technologies;
 
-	private LocalDate endDate;
+  @OneToMany
+  private Set<Document> documents;
 
-	public Internship() {
-		student = new Student();
-		enterprise = new Enterprise();
-	}
+  @Temporal(TemporalType.DATE)
+  private Date defenseDate;
 
-	public Internship(Integer id, String subject, Student student, Enterprise enterprise, String supervisor,
-			boolean remuneration, boolean preEmployment, String job, List<Technology> technologies, LocalDate startDate,
-			LocalDate endDate) {
-		super();
-		this.id = id;
-		this.subject = subject;
-		this.student = student;
-		this.enterprise = enterprise;
-		this.supervisor = supervisor;
-		this.remuneration = remuneration;
-		this.preEmployment = preEmployment;
-		this.job = job;
-		this.technologies = technologies;
-		this.startDate = startDate;
-		this.endDate = endDate;
-	}
+  private LocalDate startDate;
 
-	public Integer getId() {
-		return id;
-	}
+  private LocalDate endDate;
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+  @ElementCollection
+  private List<String> jury;
 
-	public String getSubject() {
-		return subject;
-	}
+  private double mark;
 
-	public void setSubject(String subject) {
-		this.subject = subject;
-	}
+  public Internship() {
+    student = new Student();
+    enterprise = new Enterprise();
+  }
 
-	public Student getStudent() {
-		return student;
-	}
+  public Internship(Integer id, String subject, Student student, Enterprise enterprise,
+      String supervisor,
+      boolean remuneration, boolean preEmployment, String job, List<Technology> technologies,
+      LocalDate startDate,
+      LocalDate endDate) {
+    super();
+    this.id = id;
+    this.subject = subject;
+    this.student = student;
+    this.enterprise = enterprise;
+    this.supervisor = supervisor;
+    this.remuneration = remuneration;
+    this.preEmployment = preEmployment;
+    this.job = job;
+    this.technologies = technologies;
+    this.startDate = startDate;
+    this.endDate = endDate;
+  }
 
-	public void setStudent(Student student) {
-		this.student = student;
-	}
+  public Integer getId() {
+    return id;
+  }
 
-	public Enterprise getEnterprise() {
-		return enterprise;
-	}
+  public void setId(Integer id) {
+    this.id = id;
+  }
 
-	public void setEnterprise(Enterprise enterprise) {
-		this.enterprise = enterprise;
-	}
+  public String getSubject() {
+    return subject;
+  }
 
-	public String getSupervisor() {
-		return supervisor;
-	}
+  public void setSubject(String subject) {
+    this.subject = subject;
+  }
 
-	public void setSupervisor(String supervisor) {
-		this.supervisor = supervisor;
-	}
+  public Student getStudent() {
+    return student;
+  }
 
-	public boolean isRemuneration() {
-		return remuneration;
-	}
+  public void setStudent(Student student) {
+    this.student = student;
+  }
 
-	public void setRemuneration(boolean remuneration) {
-		this.remuneration = remuneration;
-	}
+  public Enterprise getEnterprise() {
+    return enterprise;
+  }
 
-	public boolean isPreEmployment() {
-		return preEmployment;
-	}
+  public void setEnterprise(Enterprise enterprise) {
+    this.enterprise = enterprise;
+  }
 
-	public void setPreEmployment(boolean preEmployment) {
-		this.preEmployment = preEmployment;
-	}
+  public String getSupervisor() {
+    return supervisor;
+  }
 
-	public String getJob() {
-		return job;
-	}
+  public void setSupervisor(String supervisor) {
+    this.supervisor = supervisor;
+  }
 
-	public void setJob(String job) {
-		this.job = job;
-	}
+  public boolean isRemuneration() {
+    return remuneration;
+  }
 
-	public List<Technology> getTechnologies() {
-		return technologies;
-	}
+  public void setRemuneration(boolean remuneration) {
+    this.remuneration = remuneration;
+  }
 
-	public void setTechnologies(List<Technology> technologies) {
-		this.technologies = technologies;
-	}
+  public boolean isPreEmployment() {
+    return preEmployment;
+  }
 
-	public LocalDate getStartDate() {
-		return startDate;
-	}
+  public void setPreEmployment(boolean preEmployment) {
+    this.preEmployment = preEmployment;
+  }
 
-	public void setStartDate(LocalDate startDate) {
-		this.startDate = startDate;
-	}
+  public String getJob() {
+    return job;
+  }
 
-	public LocalDate getEndDate() {
-		return endDate;
-	}
+  public void setJob(String job) {
+    this.job = job;
+  }
 
-	public void setEndDate(LocalDate endDate) {
-		this.endDate = endDate;
-	}
+  public List<Technology> getTechnologies() {
+    return technologies;
+  }
 
-	@Override
-	public String toString() {
-		return "Internship [id=" + id + ", subject=" + subject + ", student=" + student + ", enterprise=" + enterprise
-				+ "]";
-	}
+  public void setTechnologies(List<Technology> technologies) {
+    this.technologies = technologies;
+  }
+
+  public LocalDate getStartDate() {
+    return startDate;
+  }
+
+  public void setStartDate(LocalDate startDate) {
+    this.startDate = startDate;
+  }
+
+  public LocalDate getEndDate() {
+    return endDate;
+  }
+
+  public void setEndDate(LocalDate endDate) {
+    this.endDate = endDate;
+  }
+
+  public Set<Document> getDocuments() {
+    return documents;
+  }
+
+  public void setDocuments(Set<Document> documents) {
+    this.documents = documents;
+  }
+
+  public Date getDefenseDate() {
+    return defenseDate;
+  }
+
+  public void setDefenseDate(Date defenseDate) {
+    this.defenseDate = defenseDate;
+  }
+
+  public List<String> getJury() {
+    return jury;
+  }
+
+  public void setJury(List<String> jury) {
+    this.jury = jury;
+  }
+
+  public double getMark() {
+    return mark;
+  }
+
+  public void setMark(double mark) {
+    this.mark = mark;
+  }
+
+  @Override
+  public String toString() {
+    return "Internship [id=" + id + ", subject=" + subject + ", student=" + student
+        + ", enterprise=" + enterprise
+        + "]";
+  }
 }

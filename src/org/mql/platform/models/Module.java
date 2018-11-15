@@ -2,11 +2,13 @@ package org.mql.platform.models;
 
 import java.util.Set;
 import javax.persistence.Entity;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 /**
  * @author mehdithe
@@ -21,8 +23,16 @@ public class Module {
   @OneToMany(mappedBy = "module")
   private Set<Project> projects;
 
-  @ManyToMany(mappedBy = "modules")
-  private Set<Student> students;
+  private String name;
+
+  @Enumerated
+  private Semester semester;
+
+  @OneToOne
+  private Professor professor;
+
+  @OneToMany
+  private Set<Document> documents;
 
   public Module() {
   }
@@ -43,11 +53,27 @@ public class Module {
     this.projects = projects;
   }
 
-  public Set<Student> getStudents() {
-    return students;
+  public String getName() {
+    return name;
   }
 
-  public void setStudents(Set<Student> students) {
-    this.students = students;
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public Semester getSemester() {
+    return semester;
+  }
+
+  public void setSemester(Semester semester) {
+    this.semester = semester;
+  }
+
+  public Professor getProfessor() {
+    return professor;
+  }
+
+  public void setProfessor(Professor professor) {
+    this.professor = professor;
   }
 }
