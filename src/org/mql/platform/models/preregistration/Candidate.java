@@ -1,169 +1,142 @@
 package org.mql.platform.models.preregistration;
 
-import java.util.List;
-import java.util.Vector;
+import java.time.LocalDate;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
-/*
- * For managing new candidates yet to be MQL students
- *
- * @author OussamaElrh
- * */
+import org.mql.platform.models.Address;
+import org.mql.platform.models.Gender;
+import org.mql.platform.models.Status;
+import org.mql.platform.tools.preregistration.LocalDateAdapter;
+
+@XmlRootElement(name="candidate")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Candidate {
 
-  private String cin;
+	private String cin;
+	private String cne;
+	private String lastName;
+	private String firstName;
+	
+	@XmlJavaTypeAdapter(type=LocalDate.class , value=LocalDateAdapter.class)
+	private LocalDate birthDate;
+	private Status status;
+	private Address address;
+	private Gender gender;
+	private String email;
+	private String phoneNumber;
+	private EducationLevels educationLevels;
 
-  private int cne;
+	public Candidate() {
+		
+	}
 
-  private String lastName;
+	public Candidate(String cin, String cne, int preregistrationYear, String lastName, String firstName,
+			LocalDate birthDate, Status status, Address address, Gender gender, String email, String phoneNumber,
+			EducationLevels educationLevels) {
+		super();
+		this.cin = cin;
+		this.cne = cne;
+		this.lastName = lastName;
+		this.firstName = firstName;
+		this.birthDate = birthDate;
+		this.status = status;
+		this.address = address;
+		this.gender = gender;
+		this.email = email;
+		this.phoneNumber = phoneNumber;
+		this.educationLevels = educationLevels;
+	}
 
-  private String firstName;
+	public String getCin() {
+		return cin;
+	}
 
-  private int yearOfBirth;
+	public void setCin(String cin) {
+		this.cin = cin;
+	}
 
-  private String situation;
+	public String getCne() {
+		return cne;
+	}
 
-  private String city;
+	public void setCne(String cne) {
+		this.cne = cne;
+	}
 
-  private String gender;
+	public String getLastName() {
+		return lastName;
+	}
 
-  private boolean handicap;
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
 
-  private List<Diploma> diplomas;
+	public String getFirstName() {
+		return firstName;
+	}
 
-  private double mark;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
 
-  public Candidate() {
-  }
+	public LocalDate getBirthDate() {
+		return birthDate;
+	}
 
-  public Candidate(String cin, int cne, String lastName, String firstName, int dateOfBirth,
-      String situation,
-      String city, String gender, boolean handicap, List<Diploma> diplomas) {
-    setCin(cin);
-    setCne(cne);
-    setLastName(lastName);
-    setFirstName(firstName);
-    setYearOfBirth(dateOfBirth);
-    setSituation(situation);
-    setCity(city);
-    setGender(gender);
-    setHandicap(handicap);
-    setDiplomas(diplomas);
-  }
+	public void setBirthDate(LocalDate birthDate) {
+		this.birthDate = birthDate;
+	}
 
-  public String getCin() {
-    return cin;
-  }
+	public Status getStatus() {
+		return status;
+	}
 
-  public void setCin(String cin) {
-    this.cin = cin;
-  }
+	public void setStatus(Status status) {
+		this.status = status;
+	}
 
-  public int getCne() {
-    return cne;
-  }
+	public Address getAdress() {
+		return address;
+	}
 
-  public void setCne(int cne) {
-    this.cne = cne;
-  }
+	public void setAdress(Address address) {
+		this.address = address;
+	}
 
-  public String getLastName() {
-    return lastName;
-  }
+	public Gender getGender() {
+		return gender;
+	}
 
-  public void setLastName(String lastName) {
-    this.lastName = lastName;
-  }
+	public void setGender(Gender gender) {
+		this.gender = gender;
+	}
 
-  public String getFirstName() {
-    return firstName;
-  }
+	public String getEmail() {
+		return email;
+	}
 
-  public void setFirstName(String firstName) {
-    this.firstName = firstName;
-  }
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
-  public int getYearOfBirth() {
-    return yearOfBirth;
-  }
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
 
-  public void setYearOfBirth(int yearOfBirth) {
-    this.yearOfBirth = yearOfBirth;
-  }
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
 
-  public String getSituation() {
-    return situation;
-  }
+	public EducationLevels getEducationLevels() {
+		return educationLevels;
+	}
 
-  public void setSituation(String situation) {
-    this.situation = situation;
-  }
-
-  public String getCity() {
-    return city;
-  }
-
-  public void setCity(String city) {
-    this.city = city;
-  }
-
-  public String getGender() {
-    return gender;
-  }
-
-  public void setGender(String gender) {
-    this.gender = gender;
-  }
-
-  public boolean isHandicap() {
-    return handicap;
-  }
-
-  public void setHandicap(boolean handicap) {
-    this.handicap = handicap;
-  }
-
-  public List<Diploma> getDiplomas() {
-    return diplomas;
-  }
-
-  public void setDiplomas(List<Diploma> diplomas) {
-    this.diplomas = new Vector<Diploma>();
-    this.diplomas.addAll(diplomas);
-  }
-
-  public double getMark() {
-    return mark;
-  }
-
-  public void setMark(double mark) {
-    this.mark = mark;
-  }
-
-  public String toString() {
-    return "Candidate [cin=" + cin + ", cne=" + cne + ", lastName=" + lastName + ", firstName="
-        + firstName + ", yearOfBirth=" + yearOfBirth + ", situation=" + situation + ", city=" + city
-        + ", gender="
-        + gender
-        + ", handicap=" + handicap + ", diplomas=" + diplomas + "]";
-  }
-
-  // TODO: to be refactored to use something like JAXB
-  public String toXml() {
-    StringBuffer xml = new StringBuffer("<candidat cin ='" + getCin() + "'>");
-    xml.append("<cne>" + getCne() + "</cne>");
-    xml.append("<firstName>" + getFirstName() + "</firstName>");
-    xml.append("<lastName>" + getLastName() + "</lastName>");
-    xml.append("<yearOfBirth>" + getYearOfBirth() + "</yearOfBirth>");
-    xml.append("<situation>" + getSituation() + "</situation>");
-    xml.append("<city>" + getCity() + "</city>");
-    xml.append("<handicap>" + isHandicap() + "</handicap>");
-    xml.append("<diplomas>");
-    for (Diploma diploma : diplomas) {
-      xml.append(diploma.toXml());
-    }
-    xml.append("</diplomas>");
-    xml.append("</candidat>");
-    return xml.toString();
-  }
+	public void setEducationLevels(EducationLevels educationLevels) {
+		this.educationLevels = educationLevels;
+	}
+	
 }

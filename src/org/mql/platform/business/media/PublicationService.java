@@ -1,4 +1,4 @@
-package org.mql.platform.business;
+package org.mql.platform.business.media;
 
 import java.util.List;
 
