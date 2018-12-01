@@ -1,7 +1,10 @@
 package org.mql.platform.models;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,73 +18,85 @@ import javax.persistence.OneToMany;
 @Entity
 public class Enterprise {
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Integer id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
 
-  private String name;
+	private String name;
 
-  private String email;
+	private String email;
 
-  private int phoneNumber;
+	private int phoneNumber;
 
-  private String website;
+	private String website;
 
-  @OneToMany(mappedBy = "enterprise")
-  private List<Internship> internships = new ArrayList<>();
+	@OneToMany(mappedBy = "enterprise")
+	private List<Internship> internships = new ArrayList<>();
 
-  @OneToMany
-  private List<Address> address = new ArrayList<>();
+	@OneToMany
+	private List<Address> address = new ArrayList<>();
 
-  public Enterprise() {
-  }
+	@OneToMany
+	private Set<EnterpriseSite> enterpriseSites;
 
-  public Integer getId() {
-    return id;
-  }
+	public Enterprise() {
+		enterpriseSites = new HashSet<>();
+	}
 
-  public void setId(Integer id) {
-    this.id = id;
-  }
+	public Integer getId() {
+		return id;
+	}
 
-  public List<Internship> getInternships() {
-    return internships;
-  }
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
-  public void setInternships(List<Internship> internships) {
-    this.internships = internships;
-  }
+	public List<Internship> getInternships() {
+		return internships;
+	}
 
-  public String getName() {
-    return name;
-  }
+	public void setInternships(List<Internship> internships) {
+		this.internships = internships;
+	}
 
-  public void setName(String name) {
-    this.name = name;
-  }
+	public String getName() {
+		return name;
+	}
 
-  public String getEmail() {
-    return email;
-  }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-  public void setEmail(String email) {
-    this.email = email;
-  }
+	public String getEmail() {
+		return email;
+	}
 
-  public int getPhoneNumber() {
-    return phoneNumber;
-  }
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
-  public void setPhoneNumber(int phoneNumber) {
-    this.phoneNumber = phoneNumber;
-  }
+	public int getPhoneNumber() {
+		return phoneNumber;
+	}
 
-  public String getWebsite() {
-    return website;
-  }
+	public void setPhoneNumber(int phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
 
-  public void setWebsite(String website) {
-    this.website = website;
-  }
+	public String getWebsite() {
+		return website;
+	}
+
+	public void setWebsite(String website) {
+		this.website = website;
+	}
+
+	public Set<EnterpriseSite> getEnterpriseSites() {
+		return enterpriseSites;
+	}
+
+	public void setEnterpriseSites(Set<EnterpriseSite> enterpriseSites) {
+		this.enterpriseSites = enterpriseSites;
+	}
 
 }
