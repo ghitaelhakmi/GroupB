@@ -1,6 +1,5 @@
 package org.mql.platform.models;
 
-import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Entity;
@@ -11,29 +10,29 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 /**
- * @author mehdithe
+ * @author chermehdi
  */
 @Entity
-public class Project {
+public class ProjectActivity {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
 
-  @OneToOne
-  private Team team;
-
-  @OneToMany
-  private Set<Document> documents = new HashSet<>();
-
   private String title;
-
 
   private String description;
 
-  private LocalDate createdAt;
+  @OneToOne
+  private Module module;
 
-  public Project() {
+  private ClassYear classYear;
+
+  @OneToMany
+  private Set<Project> projects = new HashSet<>();
+
+  public ProjectActivity() {
+
   }
 
   public Integer getId() {
@@ -42,14 +41,6 @@ public class Project {
 
   public void setId(Integer id) {
     this.id = id;
-  }
-
-  public Set<Document> getDocuments() {
-    return documents;
-  }
-
-  public void setDocuments(Set<Document> documents) {
-    this.documents = documents;
   }
 
   public String getTitle() {
@@ -68,19 +59,27 @@ public class Project {
     this.description = description;
   }
 
-  public LocalDate getCreatedAt() {
-    return createdAt;
+  public Module getModule() {
+    return module;
   }
 
-  public void setCreatedAt(LocalDate createdAt) {
-    this.createdAt = createdAt;
+  public void setModule(Module module) {
+    this.module = module;
   }
 
-  public Team getTeam() {
-    return team;
+  public ClassYear getClassYear() {
+    return classYear;
   }
 
-  public void setTeam(Team team) {
-    this.team = team;
+  public void setClassYear(ClassYear classYear) {
+    this.classYear = classYear;
+  }
+
+  public Set<Project> getProjects() {
+    return projects;
+  }
+
+  public void setProjects(Set<Project> projects) {
+    this.projects = projects;
   }
 }

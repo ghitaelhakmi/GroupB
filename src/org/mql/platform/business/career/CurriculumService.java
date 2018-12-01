@@ -1,4 +1,4 @@
-package org.mql.platform.business;
+package org.mql.platform.business.career;
 
 import java.util.List;
 

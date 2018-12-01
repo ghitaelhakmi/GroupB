@@ -1,7 +1,6 @@
 package org.mql.platform.models.converters;
 
 import java.sql.Date;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import javax.persistence.AttributeConverter;
