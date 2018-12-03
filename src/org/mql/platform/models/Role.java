@@ -16,7 +16,9 @@ public class Role {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private Integer id;
-
+  
+  private String name;
+  
   @ManyToMany(mappedBy = "roles")
   private Set<User> users;
 
@@ -38,4 +40,12 @@ public class Role {
   public void setUsers(Set<User> users) {
     this.users = users;
   }
+
+public String getName() {
+	return name;
+}
+
+public void setName(String name) {
+	this.name = name;
+}
 }

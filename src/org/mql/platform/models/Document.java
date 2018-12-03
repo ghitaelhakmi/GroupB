@@ -9,8 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 /**
  * @author mehdithe
@@ -29,16 +27,12 @@ public class Document {
   @Enumerated(EnumType.STRING)
   private DocumentType type;
 
-  private String name;
+  private String title;
 
   private String path;
 
   private String description;
 
-  @Enumerated
-  private Language language;
-
-  @Temporal(TemporalType.TIMESTAMP)
   private LocalDate createdAt;
 
   public Document() {
@@ -68,12 +62,12 @@ public class Document {
     this.type = type;
   }
 
-  public String getName() {
-    return name;
+  public String getTitle() {
+    return title;
   }
 
-  public void setName(String name) {
-    this.name = name;
+  public void setTitle(String title) {
+    this.title = title;
   }
 
   public String getPath() {
@@ -98,13 +92,5 @@ public class Document {
 
   public void setCreatedAt(LocalDate createdAt) {
     this.createdAt = createdAt;
-  }
-
-  public Language getLanguage() {
-    return language;
-  }
-
-  public void setLanguage(Language language) {
-    this.language = language;
   }
 }

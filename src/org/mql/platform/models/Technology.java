@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 /**
- * @author mehdithe
+ * @author chermehdi
  */
 @Entity
 public class Technology {
@@ -14,6 +14,8 @@ public class Technology {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
+
+  private String label;
 
   public Technology() {
   }
@@ -24,5 +26,13 @@ public class Technology {
 
   public void setId(Integer id) {
     this.id = id;
+  }
+
+  public String getLabel() {
+    return label;
+  }
+
+  public void setLabel(String label) {
+    this.label = label;
   }
 }

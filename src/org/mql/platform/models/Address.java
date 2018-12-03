@@ -10,58 +10,70 @@ import javax.persistence.OneToOne;
 @Entity
 public class Address {
 
-  @Id
-  private int id;
+	@Id
+	private int id;
 
-  private String city;
+	private String city;
 
-  private int postalCode;
+	private int postalCode;
 
-  private String address;
+	private String address;
 
-  @OneToOne(mappedBy = "address")
-  private User owner;
+	@OneToOne(mappedBy = "address")
+	private User owner;
 
-  public Address() {
-  }
+	@OneToOne(mappedBy = "address")
+	private EnterpriseSite enterpriseSite;
 
-  public int getId() {
-    return id;
-  }
+	public Address() {
+	}
 
-  public void setId(int id) {
-    this.id = id;
-  }
+	public int getId() {
+		return id;
+	}
 
-  public String getCity() {
-    return city;
-  }
+	public void setId(int id) {
+		this.id = id;
+	}
 
-  public void setCity(String city) {
-    this.city = city;
-  }
+	public String getCity() {
+		return city;
+	}
 
-  public int getPostalCode() {
-    return postalCode;
-  }
+	public void setCity(String city) {
+		this.city = city;
+	}
 
-  public void setPostalCode(int postalCode) {
-    this.postalCode = postalCode;
-  }
+	public int getPostalCode() {
+		return postalCode;
+	}
 
-  public String getAddress() {
-    return address;
-  }
+	public void setPostalCode(int postalCode) {
+		this.postalCode = postalCode;
+	}
 
-  public void setAddress(String address) {
-    this.address = address;
-  }
+	public String getAddress() {
+		return address;
+	}
 
-  public User getOwner() {
-    return owner;
-  }
+	public void setAddress(String address) {
+		this.address = address;
+	}
 
-  public void setOwner(User owner) {
-    this.owner = owner;
-  }
+	public User getOwner() {
+		return owner;
+	}
+
+	public void setOwner(User owner) {
+		this.owner = owner;
+	}
+
+	public EnterpriseSite getEnterpriseSite() {
+		return enterpriseSite;
+	}
+
+	public void setEnterpriseSite(EnterpriseSite enterpriseSite) {
+		this.enterpriseSite = enterpriseSite;
+	}
+
 }

@@ -1,15 +1,9 @@
 package org.mql.platform.models;
 
 import java.time.LocalDate;
-import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.Enumerated;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 /**
  * @author mehdithe
@@ -17,31 +11,11 @@ import javax.persistence.TemporalType;
 @Entity
 public class Student extends User {
 
-  @OneToOne
-  private Internship endOfStudiesProject;
-
-  @ManyToMany
-  @JoinTable(
-      name = "student_module",
-      joinColumns = @JoinColumn(name = "student_id", referencedColumnName = "id"),
-      inverseJoinColumns = @JoinColumn(name = "module_id", referencedColumnName = "id")
-  )
-  private Set<Module> modules;
-
-  @ManyToMany
-  @JoinTable(
-      name = "student_team",
-      joinColumns = @JoinColumn(name = "student_id", referencedColumnName = "id"),
-      inverseJoinColumns = @JoinColumn(name = "team_id", referencedColumnName = "id")
-  )
-  private Set<Team> teams;
-
   private String cne;
 
   private String cin;
 
-  @Temporal(TemporalType.DATE)
-  private LocalDate birthday;
+  private LocalDate birthdate;
 
   @Enumerated
   private Level level;
@@ -49,28 +23,17 @@ public class Student extends User {
   @Enumerated
   private Status status;
 
+  @OneToOne
+  private Internship endOfStudiesProject;
+
+  private ClassYear classYear;
+
   public Internship getEndOfStudiesProject() {
     return endOfStudiesProject;
   }
 
   public void setEndOfStudiesProject(Internship endOfStudiesProject) {
     this.endOfStudiesProject = endOfStudiesProject;
-  }
-
-  public Set<Module> getModules() {
-    return modules;
-  }
-
-  public void setModules(Set<Module> modules) {
-    this.modules = modules;
-  }
-
-  public Set<Team> getTeams() {
-    return teams;
-  }
-
-  public void setTeams(Set<Team> teams) {
-    this.teams = teams;
   }
 
   public String getCne() {
@@ -89,12 +52,12 @@ public class Student extends User {
     this.cin = cin;
   }
 
-  public LocalDate getBirthday() {
-    return birthday;
+  public LocalDate getBirthdate() {
+    return birthdate;
   }
 
-  public void setBirthday(LocalDate birthday) {
-    this.birthday = birthday;
+  public void setBirthdate(LocalDate birthdate) {
+    this.birthdate = birthdate;
   }
 
   public Level getLevel() {
@@ -111,5 +74,13 @@ public class Student extends User {
 
   public void setStatus(Status status) {
     this.status = status;
+  }
+
+  public ClassYear getClassYear() {
+    return classYear;
+  }
+
+  public void setClassYear(ClassYear classYear) {
+    this.classYear = classYear;
   }
 }

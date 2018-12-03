@@ -1,13 +1,15 @@
 package org.mql.platform.models;
 
 /**
- * @author mehdithe
+ * @author chermehdi
  */
 public enum Level {
 
   M1("Premiere annee"),
 
-  M2("Deuxieme annee");
+  M2("Deuxieme annee"),
+
+  LAUREATE("Lauréat");
 
   private String representation;
 
